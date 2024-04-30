@@ -1,18 +1,16 @@
-package lab;
-
 public class ComprehensivePolicy extends InsurancePolicy {
     protected int ageOfDriver;
     protected int level;
 
-    public ComprehensivePolicy(String policyHolderName, int id, Car car, int numberOfClaims, int age, int level) {
-        super(policyHolderName, id, car, numberOfClaims);
+    public ComprehensivePolicy(String policyHolderName, int id, Car car, int numberOfClaims, MyDate expiryDate, int age, int level) {
+        super(policyHolderName, id, car, numberOfClaims, expiryDate);
         this.ageOfDriver = age;
         this.level = level;
     }
 
     @Override
-    public void printAttributes() {
-        super.printAttributes();
+    public void print() {
+        super.print();
         System.out.println(" Driver's age: " + ageOfDriver + " Level: " + level);
     }
 

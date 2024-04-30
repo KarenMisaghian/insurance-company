@@ -1,5 +1,3 @@
-package lab;
-
 public class Car {
     public enum CarType {
         SUV,
@@ -21,7 +19,27 @@ public class Car {
     }
 
     public double getPrice() {
-        return this.price;
+        return price;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public int getManufacturingYear() {
+        return manufacturingYear;
+    }
+
+    public void setManufacturingYear(int year) {
+        this.manufacturingYear = year;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public String toString() {
