@@ -23,6 +23,10 @@ public abstract class InsurancePolicy {
         this.car.setModel(model);
     }
 
+    public MyDate getDate() {
+        return this.expiryDate;
+    }
+
     public void print() {
         System.out.print("Name of the policy holder: " + policyHolderName + " ID: " + id + " Number of claims: "
                 + numberOfClaims + " Car: ");
@@ -75,4 +79,15 @@ public abstract class InsurancePolicy {
     }
 
     public abstract double calculatePayment(int flatRate);
+
+    // lab 3 starts here:
+
+    public static ArrayList<InsurancePolicy> filterByExpiryDate (ArrayList<InsurancePolicy> policies, MyDate date) {
+        ArrayList<InsurancePolicy> filteredPolicies = new ArrayList<>();
+        for (InsurancePolicy policy : policies) {
+            if (policy.getDate().isExpired(date))
+                filteredPolicies.add(policy);
+        }
+        return filteredPolicies;
+    }
 }

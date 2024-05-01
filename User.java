@@ -4,7 +4,7 @@ public class User {
     private String name;
     private int userID;
     private Address address;
-    private ArrayList<InsurancePolicy> policies; 
+    private ArrayList<InsurancePolicy> policies;
 
     public User(String name, int userID, Address address) {
         this.name = name;
@@ -15,6 +15,14 @@ public class User {
 
     public void setCity(String city) {
         this.address.setCity(city);
+    }
+
+    public int getID() {
+        return this.userID;
+    }
+
+    public ArrayList<InsurancePolicy> getPolicies() {
+        return policies;
     }
 
     public void setAddress(Address address) {
@@ -80,5 +88,35 @@ public class User {
 
     public ArrayList<InsurancePolicy> filterByCarModel(String carModel) {
         return InsurancePolicy.filterByCarModel(policies, carModel);
+    }
+
+    // lab 3 starts here:
+
+    public boolean createThirdPartyPolicy(String policyHolderName, int id, Car car, int numberOfClaims,
+            MyDate expiryDate, String comments) {
+        ThirdPartyPolicy policy = new ThirdPartyPolicy(policyHolderName, id, car, numberOfClaims, expiryDate, comments);
+        for (InsurancePolicy insurancePolicy : policies) {
+            if (insurancePolicy.id == id)
+                return false;
+        }
+        this.addPolicy(policy);
+        return true;
+    }
+
+    public boolean createComprehensivePolicy(String policyHolderName, int id, Car car, int numberOfClaims,
+            MyDate expiryDate,
+            int driverAge, int level) {
+        ThirdPartyPolicy policy = new ThirdPartyPolicy(policyHolderName, id, car, numberOfClaims, expiryDate,
+                policyHolderName);
+        for (InsurancePolicy insurancePolicy : policies) {
+            if (insurancePolicy.id == id)
+                return false;
+        }
+        this.addPolicy(policy);
+        return true;
+    }
+
+    public ArrayList<InsurancePolicy> filterByExpiryDate(MyDate date) {
+        return InsurancePolicy.filterByExpiryDate(policies, date);
     }
 }

@@ -8,4 +8,14 @@ public class MyDate {
         this.month = month;
         this.year = year;
     }
+
+    public int getDateValue() {
+        return (this.year * 365) + (this.month * 30) + this.day; 
+    }
+
+    public Boolean isExpired(MyDate expiryDate) {
+        int valueOfDate = this.getDateValue();
+        int valueOfExpiryDate = expiryDate.getDateValue();
+        return (valueOfDate < valueOfExpiryDate);
+    }
 }
