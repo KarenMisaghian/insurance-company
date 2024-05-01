@@ -1,16 +1,14 @@
-package lab;
-
 public class ThirdPartyPolicy extends InsurancePolicy {
     protected String comments;
 
-    public ThirdPartyPolicy(String policyHolderName, int id, Car car, int numberOfClaims, String comments) {
-        super(policyHolderName, id, car, numberOfClaims);
+    public ThirdPartyPolicy(String policyHolderName, int id, Car car, int numberOfClaims, MyDate expiryDate, String comments) {
+        super(policyHolderName, id, car, numberOfClaims, expiryDate);
         this.comments = comments;
     }
 
     @Override
-    public void printAttributes() {
-        super.printAttributes();
+    public void print() {
+        super.print();
         System.out.println(" Comments: " + comments);
     }
 
